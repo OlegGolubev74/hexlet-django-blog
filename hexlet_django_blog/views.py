@@ -16,7 +16,7 @@ def index(request):
 
 #до рекализации редирект с главной страницы сайта на http://localhost:8000/articles/python/42/ 
 #главная страница открывается ок
-'''
+
 class IndexView(TemplateView):
     """
     Класс-представление для главной страницы.
@@ -35,14 +35,16 @@ class IndexView(TemplateView):
         context = super().get_context_data(**kwargs)
         
         # Добавляем свои данные в контекст
-        context["who"] = "World! Это самая главная страница сайта!"
+        context["who"] = "World! Это самая главная страница сайта!!!!!!!!!!!!!!!!!!1"
         
         return context
 
-'''
 
 
+#Урок 8 Маршрутизация
 #реализован редирект с главной страницы сайта на http://localhost:8000/articles/python/42/ 
+
+'''
 class IndexView(TemplateView):
     """
     Класс-представление для главной страницы.
@@ -74,7 +76,7 @@ class IndexView(TemplateView):
     # Метод get_context_data больше не нужен, так как мы не рендерим шаблон
     # но можно оставить, если в будущем снова понадобится рендерить шаблон
 
-
+'''
 
 
 

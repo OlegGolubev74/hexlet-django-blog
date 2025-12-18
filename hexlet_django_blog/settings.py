@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hexlet_django_blog',
+    'hexlet_django_blog.article',
     
 ]
 
@@ -77,9 +78,10 @@ WSGI_APPLICATION = 'hexlet_django_blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3', #"django.db.backends.postgresql" — для работы с PostgreSQL,
     }
 }
+
 
 
 # Password validation
