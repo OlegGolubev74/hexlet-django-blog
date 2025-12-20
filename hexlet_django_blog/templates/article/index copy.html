@@ -9,20 +9,15 @@
     <h1>"Это шаблон index.html для приложения article. 
         Шаблон находится тут: ~/wrk/hexlet-django-blog/hexlet_django_blog/templates/article!!!!!!!!!!!!!1"</h1>
 <!--base.html берется автоматом из общей папки temolates -->
-{% extends "base.html" %}
+        {% extends "base.html" %} 
 
-{% block content %}
-    <h1>Список статей</h1>
-    {% for article in articles %}
-        <!-- Делаем заголовок ссылкой -->
-        <h2>
-            <a href="{% url 'article_detail' article.id %}">
-                {{ article.name }}
-            </a>
-        </h2>
-        <div>{{ article.body|slice:":200" }}</div>
-    {% endfor %}
-{% endblock %}
+        {% block content %}
+            <h1>Список статей</h1>
+            {% for article in articles %}
+                <h2>{{ article.name }}</h2>
+                <div>{{ article.body|slice:":200" }}</div>
+            {% endfor %}
+        {% endblock %}
         
 </body>
 </html>
