@@ -2,6 +2,26 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 
+
+from hexlet_django_blog.article.models import Article
+
+
+#урок 14 Список (CRUD)
+class IndexView(View):
+    def get(self, request, *args, **kwargs):
+        articles = Article.objects.all()[:15] # <-Первой строкой из базы извлекаются 15 первых статей
+        return render(
+            request,
+            "article/index.html",
+            context={
+                "articles": articles,
+            },
+        )
+
+
+
+
+#сама первая версия вьюхи
 '''
 class IndexView(View):
     """
@@ -28,8 +48,11 @@ class IndexView(View):
     
     # def delete(self, request, *args, **kwargs):
     #     return HttpResponse("DELETE запрос")
+'''
+
 
 '''
+http://localhost:8000/articles/e/4/ для такого запроса
 class IndexView(View):
     """
     Класс-представление для отображения статьи по тегу и ID.
@@ -47,11 +70,12 @@ class IndexView(View):
         # Формируем и возвращаем ответ
         return HttpResponse(f"Статья номер {article_id}. Тег {tags}")
 
-
+'''
 
 
 
 # Старая версия функции (можно удалить или закомментировать):
+#версия без классов
 '''
 def index(request):
     return render(

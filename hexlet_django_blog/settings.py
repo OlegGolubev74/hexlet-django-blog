@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+import dj_database_url
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5pvxl2zeixunvo-nc$td-6!ar02o^#hle&)ot54+0oa##iq*$$'
+#SECRET_KEY = 'django-insecure-5pvxl2zeixunvo-nc$td-6!ar02o^#hle&)ot54+0oa##iq*$$'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = os.getenv("DEBUG", False)
 
 ALLOWED_HOSTS = []
 
@@ -39,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hexlet_django_blog',
     'hexlet_django_blog.article',
+    'hexlet_django_blog.tovary',
     
 ]
 
@@ -81,6 +89,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3', #"django.db.backends.postgresql" — для работы с PostgreSQL,
     }
 }
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES["default"].update(db_from_env)
 
 
 
